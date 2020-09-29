@@ -1,0 +1,13 @@
+.yo {
+    border: 2px dashed red;
+    margin: 5px;
+}
+
+.logs {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.logs div {
+    width: 70vw;
+}

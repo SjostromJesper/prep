@@ -30,3 +30,9 @@ export const monsterList = {
         "exp": 18
     }
 };
+
+export const monstersToArray = () => {
+    const monsterListArray = [];
+    for (let monster in monsterList) monsterListArray.push(monster);
+    return monsterListArray;
+};

@@ -1,11 +1,16 @@
-import {monsterList} from "./monsterList.js";
+/**
+ * TODO
+ * worldupdate
+ * start-formulär för spelare
+ * autogenerate randomized map
+ */
+
+import {monsterList, monstersToArray} from "./monsterList.js";
 import {experienceChart} from "./skillCharts.js";
-import {tileMap} from "./map.js";
+//import {tileMap} from "./map.js";
 import {Monster} from "./models/Monster.js";
+import {Player} from "./models/Player.js";
 
-
-const monsters = [];
-for (let monster in monsterList) monsters.push(monster);
 
 const healthPercent = document.querySelector(".percent");
 const healthText = document.querySelector(".health-text");
@@ -16,26 +21,53 @@ const eventLog = document.querySelector(".event-log");
 
 const healButton = document.querySelector('.heal');
 const damageButton = document.querySelector('.damage');
+const fleeButton = document.querySelector('.flee');
 
 
 const map = document.querySelector(".map");
 const c = map.getContext('2d');
 
-const tileSize = 20;
+const tileSize = 40;
 let x = 0;
 let y = 0;
 
-map.setAttribute('width', (tileMap.length * 20).toString());
-map.setAttribute('height', (tileMap.length * 20).toString());
+const entities = [];
+
+entities.push(new Player("beppe", 0, 10, "axe"));
+
+const generateMap  = () => {
+    const mapSize = 17;
+    const generatedMap = [];
+    for(let y = 0 ; y < mapSize ; y++) {
+        generatedMap.push([]);
+        for(let x = 0 ; x < mapSize ; x++) {
+            let chance = (Math.floor(Math.random() * 100));
+            if(chance < 85) {
+                generatedMap[y].push(0)
+            }
+            else {
+                generatedMap[y].push(1)
+            }
+        }
+    }
+    return generatedMap;
+};
+
+const tileMap = generateMap();
+
+map.setAttribute('width', (tileMap.length * tileSize).toString());
+map.setAttribute('height', (tileMap.length * tileSize).toString());
+
+
 
 
 const drawMap = () => {
     c.clearRect(0, 0, 600, 600);
     for (let i = 0; i < tileMap.length; i++) {
         for (let j = 0; j < tileMap.length; j++) {
-            c.fillStyle = "#000";
-            if (tileMap[i][j] === 0) {
-                c.fillStyle = "#0F0"
+            c.fillStyle = "#9dff59";
+            if (tileMap[i][j] === 1) {
+                c.fillStyle = "#000"
             }
             if (tileMap[i][j] === 3) {
                 c.fillStyle = "#F00"
@@ -47,11 +79,29 @@ const drawMap = () => {
     }
 };
 
-const drawPlayer = () => {
+const drawEntity = () => {
 
-    c.beginPath();
-    c.fillStyle = "rgba(111,142,255,0.7)";
-    c.fillRect(x, y, tileSize, tileSize);
+    entities.forEach(entity => {
+        if(entity.id === 1) {
+            const playerImage = document.querySelector("#dragon");
+            console.log("xy:", x + ":" + y);
+            c.drawImage(playerImage, x, y, tileSize, tileSize);
+        }
+        if(entity.id === 5) {
+            //console.log("drawing enemy");
+            const dragonImage = document.querySelector("#" + entity.name);
+            c.drawImage(dragonImage, entity.posX * 40, entity.posY * 40, tileSize, tileSize);
+        }
+    });
+
+
+
+
+
+
+
+    // const dragonImage = document.querySelector("#source");
+    // c.drawImage(dragonImage, x, y, tileSize, tileSize);
 };
 
 const updateStats = () => {
@@ -67,7 +117,7 @@ const updateStats = () => {
 const update = () => {
 
         drawMap();
-        drawPlayer();
+        drawEntity()
         updateStats();
 
 
@@ -139,16 +189,33 @@ damageButton.addEventListener('click', event => {
     }
 });
 
-const generateNewEnemy = () => {
-    const randomPos = Math.floor(Math.random() * tileMap.length);
-    if(tileMap[randomPos][randomPos] === 0) {
-        tileMap[randomPos][randomPos] = 3;
+fleeButton.addEventListener("click", () => {
+    console.log("finding pos");
+    generateNewEnemy()
+});
 
-        console.log("combat tile: ", combatTile);
-        console.log(tileMap[combatTile[0]][combatTile[1]]);
-        tileMap[combatTile[0]][combatTile[1]] = 0;
-        console.log(tileMap[combatTile[0]][combatTile[1]]);
+const generateNewEnemy = () => {
+    let arr = [];
+
+    let foundPos = false;
+    while(!foundPos) {
+
+        const randomPosX = Math.floor(Math.random() * tileMap.length);
+        const randomPosY = Math.floor(Math.random() * tileMap.length);
+        if(tileMap[randomPosX][randomPosY] === 0) {
+            //tileMap[randomPosX][randomPosY] = 3;
+
+            arr[0] = randomPosX;
+            arr[1] = randomPosY;
+
+            const m = monsterList[monstersToArray()[Math.floor(Math.random() * monstersToArray().length)]];
+            entities.push(new Monster(m.name, m.health, m.attack, m.exp, 2, arr[0], arr[1], 5));
+            console.log("found pos");
+            foundPos = true;
+        }
     }
+
+    return arr;
 };
 
 const logEvent = (text) => {
@@ -239,7 +306,7 @@ const announcePos = () => {
             monster = null;
         }
     } else if (currentTile === 3) {
-        let chosenMonster = monsters[Math.floor(Math.random() * monsters.length)];
+        let chosenMonster = monstersToArray()[Math.floor(Math.random() * monstersToArray().length)];
         combatTile = [posX, posY];
         console.log("combat tile: ", combatTile);
         console.log(tileMap[combatTile[0]][combatTile[1]]);
@@ -274,3 +341,26 @@ addEventListener("keydown", event => {
 });
 
 requestAnimationFrame(update);
+
+
+/**
+ * TODO
+ * world event. when the player has moved a certain amount of tiles the monsters change their position as well
+ * depeing on their speed.
+ *
+ * calculate speed
+ * player base speed is 10
+ * divide the object's speed with the player speed and round down
+ * if a mosnter has a speed of 3, divide playerSpeed with 3 and round it down (10 / 3 = 3.33 ~ 3)(10 / 5 = 2 ~ 2)
+ */
+let move = 0;
+
+const worldMovement = () => {
+    monsters.forEach(monster => {
+
+    })
+};
+
+
+
+

@@ -1,0 +1,69 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+*:after, *:before {
+    box-sizing: border-box;
+}
+
+.game-wrapper {
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+
+    grid-template-rows: 3fr 1fr;
+    grid-template-columns: 3fr 1fr;
+
+    grid-template-areas:
+            "map-w info-w"
+            "event-w info-w";
+}
+
+.map-wrapper {
+    grid-area: map-w;
+}
+
+.event-wrapper {
+    grid-area: event-w;
+}
+
+.info-wrapper {
+    grid-area: info-w;
+}
+
+.health {
+    background-color: rgba(255, 0, 0, 0.18);
+
+    height: 40px;
+    width: auto;
+}
+
+.percent {
+    background-color: rgba(255, 0, 0, 1);
+    height: 40px;
+    width: 10%;
+
+    display: flex;
+    align-items: center;
+}
+
+.health-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.event-log {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.map-wrapper {
+    background-color: #ffd86c;
+}

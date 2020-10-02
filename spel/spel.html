@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="spel.css">
+
+    <title>Title</title>
+</head>
+<body>
+
+<div class="game-wrapper">
+    <div class="map-wrapper">
+        <canvas class="map"></canvas>
+    </div>
+
+    <div class="event-wrapper">
+        <div class="event-log">
+            <div id="anchor"></div>
+        </div>
+    </div>
+
+    <div class="info-wrapper">
+        <div class="health">
+            <div class="percent">
+                <p class="health-text">100</p>
+            </div>
+        </div>
+
+        <p>LEVEL: <span class="level-text"> 0</span></p>
+        <p>EXP: <span class="experience-text"> 1</span></p>
+
+        <button class="heal">heal</button>
+        <button class="damage">Attack!</button>
+        <button class="flee">flee</button>
+
+
+    </div>
+
+</div>
+
+
+<script type="module" src="spel.js"></script>
+</body>
+</html>

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61a9a598-9a4b-449b-a680-2edcd8c0c10c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="12ef62c7-21f3-4cfe-a233-372556ce553c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/prep.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spel/itemIdeas.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/grupparbete2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spel/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/map.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/models/Monster.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/models/Monster.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/models/Player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/monsterList.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/monsterList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spel/spel.css" beforeDir="false" afterPath="$PROJECT_DIR$/spel/spel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/spel.html" beforeDir="false" afterPath="$PROJECT_DIR$/spel/spel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/spel.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/spel.js" afterDir="false" />
     </list>
@@ -22,58 +21,40 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1huL96fK6aUXbgvqupBFVtMC0oP" />
+  <component name="ProjectId" id="1iL65dqOz5I58HToujEQT9y3FoG" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/spel/assets" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jsjos\dev\prep\spel\assets" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JavaScript Debug.spel.html">
-    <configuration name="calc.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/prep/calc/calc.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/grupparbete2/index.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Node.js.lol.js">
     <configuration name="spel.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/prep/spel/spel.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="calc.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/calc/calc.js" working-dir="$PROJECT_DIR$/calc">
+    <configuration name="idushfs.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/idushfs.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="ko.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/ko.js" working-dir="$PROJECT_DIR$">
+    <configuration name="lol.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/lol.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.lol.js" />
+        <item itemvalue="Node.js.idushfs.js" />
         <item itemvalue="JavaScript Debug.spel.html" />
-        <item itemvalue="JavaScript Debug.calc.html" />
-        <item itemvalue="Node.js.calc.js" />
-        <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="Node.js.ko.js" />
       </list>
     </recent_temporary>
   </component>
@@ -82,18 +63,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="61a9a598-9a4b-449b-a680-2edcd8c0c10c" name="Default Changelist" comment="" />
-      <created>1600855875016</created>
+      <changelist id="12ef62c7-21f3-4cfe-a233-372556ce553c" name="Default Changelist" comment="" />
+      <created>1601674342674</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1600855875016</updated>
-      <workItem from="1600855876091" duration="9322000" />
-      <workItem from="1601059337836" duration="1726000" />
-      <workItem from="1601277425869" duration="10884000" />
-      <workItem from="1601622464232" duration="7170000" />
-      <workItem from="1601630887815" duration="4505000" />
-      <workItem from="1601637905672" duration="1090000" />
-      <workItem from="1601641780021" duration="5142000" />
+      <updated>1601674342674</updated>
+      <workItem from="1601674343808" duration="3973000" />
+      <workItem from="1601715794782" duration="19126000" />
     </task>
     <servers />
   </component>
@@ -101,85 +77,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="627" y="226" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601628767717">
+    <state width="1877" height="264" key="GridCell.Tab.0.bottom" timestamp="1601804513674">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="627" y="226" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1601628767717" />
-    <state width="1894" height="282" key="GridCell.Tab.0.bottom" timestamp="1601626939442">
+    <state width="1877" height="264" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513674" />
+    <state width="1877" height="264" key="GridCell.Tab.0.center" timestamp="1601804513674">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601283868513" />
-    <state width="1894" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1601626939442" />
-    <state width="1894" height="282" key="GridCell.Tab.0.center" timestamp="1601626939440">
+    <state width="1877" height="264" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513674" />
+    <state width="1877" height="264" key="GridCell.Tab.0.left" timestamp="1601804513673">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="240" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601283868513" />
-    <state width="1894" height="282" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1601626939440" />
-    <state width="1894" height="282" key="GridCell.Tab.0.left" timestamp="1601626939440">
+    <state width="1877" height="264" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513673" />
+    <state width="1877" height="264" key="GridCell.Tab.0.right" timestamp="1601804513674">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="240" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601283868513" />
-    <state width="1894" height="282" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1601626939440" />
-    <state width="1894" height="282" key="GridCell.Tab.0.right" timestamp="1601626939441">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="240" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601283868513" />
-    <state width="1894" height="282" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1601626939441" />
-    <state width="1877" height="363" key="GridCell.Tab.1.bottom" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.1.center" timestamp="1601059316617">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.1.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316617" />
-    <state width="1877" height="363" key="GridCell.Tab.1.left" timestamp="1601059316617">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.1.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316617" />
-    <state width="1877" height="363" key="GridCell.Tab.1.right" timestamp="1601059316617">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.1.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316617" />
-    <state width="1877" height="363" key="GridCell.Tab.2.bottom" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.2.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.2.center" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.2.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.2.left" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.2.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.2.right" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.2.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.3.bottom" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.3.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.3.center" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.3.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.3.left" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.3.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state width="1877" height="363" key="GridCell.Tab.3.right" timestamp="1601059316618">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1877" height="363" key="GridCell.Tab.3.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601059316618" />
-    <state x="461" y="182" key="SettingsEditor" timestamp="1601623283800">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="461" y="182" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1601623283800" />
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1601285386918">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601285386918" />
+    <state width="1877" height="264" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513674" />
   </component>
 </project>

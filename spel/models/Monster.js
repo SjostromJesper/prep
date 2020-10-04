@@ -1,6 +1,7 @@
 export class Monster {
-    constructor(name, health, attack, exp, speed = 2, posX, posY, id) {
-        this.id = id;
+    constructor(name, health, attack, exp, speed = 2, posX, posY, uniqueId, ) {
+        this.uniqueId = uniqueId;
+        this.id = 5;
 
         this.name = name;
         this.health = health;

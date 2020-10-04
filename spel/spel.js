@@ -22,6 +22,13 @@ const eventLog = document.querySelector(".event-log");
 const healButton = document.querySelector('.heal');
 const damageButton = document.querySelector('.damage');
 const fleeButton = document.querySelector('.flee');
+const logger = document.querySelector('.logger');
+
+logger.addEventListener('click', event => {
+    console.log(window.localStorage);
+});
+
+
 
 
 const map = document.querySelector(".map");
@@ -33,19 +40,34 @@ let y = 0;
 
 const entities = [];
 
-entities.push(new Player("beppe", 0, 10, "axe"));
 
-const generateMap  = () => {
+const getSavedPlayer = (playerName) => {
+
+    if(typeof window.localStorage.getItem(playerName) == "string") {
+        console.log("here")
+        let p = window.localStorage.getItem("Beppe");
+        entities.push(JSON.parse(p));
+    }
+    else {
+        console.log("or here")
+        entities.push(JSON.parse(new Player("Beppe", 0, 10, "axe")));
+    }
+
+};
+getSavedPlayer("Beppe");
+
+
+
+const generateMap = () => {
     const mapSize = 17;
     const generatedMap = [];
-    for(let y = 0 ; y < mapSize ; y++) {
+    for (let y = 0; y < mapSize; y++) {
         generatedMap.push([]);
-        for(let x = 0 ; x < mapSize ; x++) {
+        for (let x = 0; x < mapSize; x++) {
             let chance = (Math.floor(Math.random() * 100));
-            if(chance < 85) {
+            if (chance < 85) {
                 generatedMap[y].push(0)
-            }
-            else {
+            } else {
                 generatedMap[y].push(1)
             }
         }
@@ -59,13 +81,11 @@ map.setAttribute('width', (tileMap.length * tileSize).toString());
 map.setAttribute('height', (tileMap.length * tileSize).toString());
 
 
-
-
 const drawMap = () => {
     c.clearRect(0, 0, 600, 600);
     for (let i = 0; i < tileMap.length; i++) {
         for (let j = 0; j < tileMap.length; j++) {
-            c.fillStyle = "#9dff59";
+            c.fillStyle = "#288a2e";
             if (tileMap[i][j] === 1) {
                 c.fillStyle = "#000"
             }
@@ -79,25 +99,26 @@ const drawMap = () => {
     }
 };
 
-const drawEntity = () => {
+const drawEntities = () => {
 
     entities.forEach(entity => {
-        if(entity.id === 1) {
-            const playerImage = document.querySelector("#dragon");
-            console.log("xy:", x + ":" + y);
+        if (entity.id === 5) {
+            const image = document.querySelector("#" + entity.name);
+            c.drawImage(image, entity.posX * 40, entity.posY * 40, tileSize, tileSize);
+        } else if (entity.id === 1) {
+            const playerImage = document.querySelector("#player");
             c.drawImage(playerImage, x, y, tileSize, tileSize);
         }
-        if(entity.id === 5) {
-            //console.log("drawing enemy");
-            const dragonImage = document.querySelector("#" + entity.name);
-            c.drawImage(dragonImage, entity.posX * 40, entity.posY * 40, tileSize, tileSize);
-        }
+
+        entities.forEach(entity => {
+            if (entity.id !== 1 && entity.posX * 40 === x && entity.posY * 40 === y && !inCombat) {
+                console.log("combat!");
+
+                monster = entity;
+                enterCombat();
+            }
+        })
     });
-
-
-
-
-
 
 
     // const dragonImage = document.querySelector("#source");
@@ -107,24 +128,32 @@ const drawEntity = () => {
 const updateStats = () => {
     if (currentHealth < 0) {
         currentHealth = 0;
+        window.localStorage.clear();
     }
-    healthPercent.style.width = currentHealth + "%";
-    healthText.innerHTML = currentHealth.toString();
-    experienceText.innerHTML = experience.toString();
+    else {
+        healthPercent.style.width = currentHealth + "%";
+        healthText.innerHTML = currentHealth.toString();
+        experienceText.innerHTML = entities[0].experience.toString();
+
+
+        window.localStorage.setItem(entities[0].name, JSON.stringify(entities[0]));
+    }
+
+
 };
 
 
 const update = () => {
 
-        drawMap();
-        drawEntity()
-        updateStats();
+    drawMap();
+    drawEntities();
+    updateStats();
 
 
     const fps = 15;
 
     setTimeout(() => {
-            requestAnimationFrame(update)
+        requestAnimationFrame(update)
 
     }, 1000 / fps);
 
@@ -132,21 +161,38 @@ const update = () => {
 let alive = true;
 let maxHealth = 100;
 let currentHealth = maxHealth;
-let experience = 0;
+
+let move = 0;
+
+let numOfHeals = 0;
 
 let inCombat = false;
 
 const baseDamage = 5;
 
+const sword = 6;
 const axe = 7;
 const greatAxe = 12;
+
+const greatSmithHammer = {
+    grip: "1h",
+    attack: 15,
+    health: 20,
+    dexterity: 3,
+    fireDamage: 4,
+    selfBurn: 4,
+    extra: "can only be wielded while unarmed on offhand"
+};
 
 
 healButton.addEventListener("click", event => {
     if (currentHealth < maxHealth) {
-        let amount = Math.floor(Math.random() * 20);
-        console.log("healing for: ", amount);
-        currentHealth += amount;
+        if(numOfHeals > 0) {
+            let amount = Math.floor(Math.random() * 20);
+            logEvent("healing for: ", amount);
+            currentHealth += amount;
+            numOfHeals--;
+        }
     }
     if (currentHealth > maxHealth) {
         currentHealth = maxHealth;
@@ -156,24 +202,31 @@ healButton.addEventListener("click", event => {
 damageButton.addEventListener('click', event => {
     if (monster !== null && alive) {
         if (monster.health > 0) {
-            let amount = Math.floor((Math.random() * baseDamage)) + axe;
-            logEvent("you attack the fiend for: " + amount);
+            let amount = Math.floor((Math.random() * baseDamage)) + greatSmithHammer.attack + greatSmithHammer.fireDamage;
+            currentHealth -= greatSmithHammer.selfBurn;
+            logEvent("you attack the fiend for: " + amount + " damage.");
             monster.health -= amount;
             if (monster.health <= 0) {
                 logEvent("you killed the foul fiend!(" + monster.exp + " exp)");
-                experience += monster.exp;
+                entities[0].experience += monster.exp;
 
                 for (let key in experienceChart) {
-                    if (experience > experienceChart[key]) {
+                    if (entities[0] > experienceChart[key]) {
                         levelText.innerHTML = key
                     }
                 }
 
+
+                for(let i = 0 ; i < entities.length ; i++) {
+                    if(entities[i].uniqueId === monster.uniqueId) {
+                        entities.splice(i, 1);
+                    }
+                }
+
+                numOfHeals++;
+                monster = null;
                 inCombat = false;
-
-                // skapa nytt monster på slumpad ruta
-                generateNewEnemy()
-
+                return;
             }
         }
 
@@ -190,31 +243,25 @@ damageButton.addEventListener('click', event => {
 });
 
 fleeButton.addEventListener("click", () => {
-    console.log("finding pos");
-    generateNewEnemy()
+    generateNewEnemy();
 });
 
 const generateNewEnemy = () => {
     let arr = [];
 
     let foundPos = false;
-    while(!foundPos) {
-
+    while (!foundPos) {
         const randomPosX = Math.floor(Math.random() * tileMap.length);
         const randomPosY = Math.floor(Math.random() * tileMap.length);
-        if(tileMap[randomPosX][randomPosY] === 0) {
-            //tileMap[randomPosX][randomPosY] = 3;
-
+        if (tileMap[randomPosX][randomPosY] === 0) {
             arr[0] = randomPosX;
             arr[1] = randomPosY;
 
             const m = monsterList[monstersToArray()[Math.floor(Math.random() * monstersToArray().length)]];
-            entities.push(new Monster(m.name, m.health, m.attack, m.exp, 2, arr[0], arr[1], 5));
-            console.log("found pos");
+            entities.push(new Monster(m.name, m.health, m.attack, m.exp, 2, arr[1], arr[0],  Math.floor(Math.random() * 1000)),5);
             foundPos = true;
         }
     }
-
     return arr;
 };
 
@@ -266,8 +313,6 @@ const walkY = (direction) => {
                 y -= tileSize;
                 announcePos()
             }
-
-
         } else {
             logEvent("you're already at the edge of the world: " + posX + posY);
         }
@@ -287,43 +332,34 @@ const walkY = (direction) => {
 };
 
 let monster = null;
-
-const createMonster = (chosenMonster) => {
-    monster = new Monster(
-        monsterList[chosenMonster].name,
-        monsterList[chosenMonster].health,
-        monsterList[chosenMonster].attack,
-        monsterList[chosenMonster].exp);
-};
-
 let combatTile = [];
 
-const announcePos = () => {
+const announcePos = (combat) => {
     let currentTile = tileMap[posY][posX];
-
-    if (currentTile === 0) {
-        if (monster !== null) {
-            monster = null;
-        }
-    } else if (currentTile === 3) {
+    move++;
+    worldMovement();
+    if (combat) {
         let chosenMonster = monstersToArray()[Math.floor(Math.random() * monstersToArray().length)];
         combatTile = [posX, posY];
-        console.log("combat tile: ", combatTile);
-        console.log(tileMap[combatTile[0]][combatTile[1]]);
         logEvent("oh my god. it's a " + chosenMonster + "!");
         inCombat = true;
-        createMonster(chosenMonster);
     }
+};
+
+const enterCombat = () => {
+    let chosenMonster = monstersToArray()[Math.floor(Math.random() * monstersToArray().length)];
+    combatTile = [posX, posY];
+
+    logEvent("oh my god. it's a " + monster.name + "!");
+    inCombat = true;
 };
 
 addEventListener("keydown", event => {
-    if(!alive) {
+    if (!alive) {
         console.log("you're dead.")
-    }
-    else if(inCombat && alive){
+    } else if (inCombat && alive) {
         logEvent(`you're in combat. you cannot move until you've killed the ${monster.name}.`);
-    }
-    else {
+    } else {
         if (event.key === "ArrowLeft" || event.key === "a") {
             walkX("left");
         }
@@ -353,14 +389,12 @@ requestAnimationFrame(update);
  * divide the object's speed with the player speed and round down
  * if a mosnter has a speed of 3, divide playerSpeed with 3 and round it down (10 / 3 = 3.33 ~ 3)(10 / 5 = 2 ~ 2)
  */
-let move = 0;
+
 
 const worldMovement = () => {
-    monsters.forEach(monster => {
-
-    })
+    if(move > 5) {
+        generateNewEnemy();
+        move = 0;
+    }
 };
-
-
-
 

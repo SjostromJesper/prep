@@ -6,5 +6,20 @@ export class Player {
         this.speed = speed;
         this.weapon = weapon;
 
+        this.strength = 10;
+        this.intelligence = 10;
+        this.dexterity = 10;
+    }
+
+    gainExp = (experience) => {
+        this.experience += experience;
+    }
+
+    calcDamage = () => {
+        return this.weapon.damage * (this.strength / 10);
+    }
+
+    calcArmor = () => {
+        return 0;
     }
 }

@@ -11,12 +11,12 @@ export const monsterList = {
         "attack": 5,
         "exp": 25
     },
-    /*"dragon": {
+    "dragon": {
         "name": "dragon",
         "health": 250,
         "attack": 100,
         "exp": 700
-    },*/
+    },
     "grandma": {
         "name": "grandma",
         "health": 2,

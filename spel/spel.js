@@ -7,7 +7,6 @@
 
 import {monsterList, monstersToArray} from "./monsterList.js";
 import {experienceChart} from "./skillCharts.js";
-//import {tileMap} from "./map.js";
 import {Monster} from "./models/Monster.js";
 import {Player} from "./models/Player.js";
 
@@ -50,7 +49,7 @@ const getSavedPlayer = (playerName) => {
     }
     else {
         console.log("or here")
-        entities.push(JSON.parse(new Player("Beppe", 0, 10, "axe")));
+        entities.push(new Player("Beppe", 0, 10, "axe"));
     }
 
 };
@@ -89,9 +88,6 @@ const drawMap = () => {
             if (tileMap[i][j] === 1) {
                 c.fillStyle = "#000"
             }
-            if (tileMap[i][j] === 3) {
-                c.fillStyle = "#F00"
-            }
 
             c.beginPath();
             c.fillRect(j * tileSize, i * (tileSize), tileSize, tileSize);
@@ -119,10 +115,6 @@ const drawEntities = () => {
             }
         })
     });
-
-
-    // const dragonImage = document.querySelector("#source");
-    // c.drawImage(dragonImage, x, y, tileSize, tileSize);
 };
 
 const updateStats = () => {
@@ -135,20 +127,15 @@ const updateStats = () => {
         healthText.innerHTML = currentHealth.toString();
         experienceText.innerHTML = entities[0].experience.toString();
 
-
         window.localStorage.setItem(entities[0].name, JSON.stringify(entities[0]));
     }
-
-
 };
-
 
 const update = () => {
 
     drawMap();
     drawEntities();
     updateStats();
-
 
     const fps = 15;
 
@@ -397,4 +384,3 @@ const worldMovement = () => {
         move = 0;
     }
 };
-

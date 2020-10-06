@@ -1,3 +1,5 @@
+
+
 export const experienceChart = {
     1: 0,
     2: 100,

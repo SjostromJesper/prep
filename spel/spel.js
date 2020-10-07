@@ -24,7 +24,7 @@ const fleeButton = document.querySelector('.flee');
 const logger = document.querySelector('.logger');
 
 logger.addEventListener('click', event => {
-    console.log(window.localStorage);
+    console.log(entities[0]);
 });
 
 
@@ -44,13 +44,12 @@ const getSavedPlayer = (playerName) => {
 
     if(typeof window.localStorage.getItem(playerName) == "string") {
         console.log("here");
-        let p =  window.localStorage.getItem("Beppe");
-        console.log(JSON.parse(p));
-        entities.push(JSON.parse(p));
+        let p =  JSON.parse(window.localStorage.getItem("Beppe"));
+        entities.push(new Player(p.id, p.level, p.name, p.experience, p.speed, p.weapon));
     }
     else {
         console.log("or here");
-        entities.push(new Player("Beppe", 0, 10, "axe"));
+        entities.push(new Player(1, 1, "Beppe", 0, 10, "axe"));
     }
 
 };
@@ -148,9 +147,10 @@ const update = () => {
     }, 1000 / fps);
 
 };
+
 let alive = true;
-let maxHealth = 100;
-let currentHealth = maxHealth;
+let maxHealth = entities[0].maxHealth;
+let currentHealth = entities[0].currentHealth;
 
 let move = 0;
 

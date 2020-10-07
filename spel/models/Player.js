@@ -1,6 +1,6 @@
 export class Player {
     /**
-     *
+     * @param id
      * @param name
      * @param experience
      * @param speed
@@ -9,11 +9,11 @@ export class Player {
      * @param maxHealth
      * @param currentHealth
      */
-    constructor(name, experience, speed = 10, weapon) {
-        this.id = 1;
+    constructor(id = 1, level, name, experience, speed = 10, weapon) {
+        this.id = id;
         this.name = name;
 
-        this.level = 1;
+        this.level = level;
         this.experience = experience;
 
         this.maxHealth = 100;
@@ -39,10 +39,7 @@ export class Player {
 
             return true;
         }
-        else {
-            console.log("you are level", this.level);
-            return false;
-        }
+        return false;
     }
 
     // calcDamage = () => {

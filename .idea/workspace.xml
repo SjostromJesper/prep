@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61a9a598-9a4b-449b-a680-2edcd8c0c10c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spel/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spel/map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spel/models/Monster.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/models/Monster.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/models/Player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/skillCharts.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/skillCharts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spel/skogsmulle.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/spel/spel.js" beforeDir="false" afterPath="$PROJECT_DIR$/spel/spel.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +40,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager" selected="Node.js.skogsmulle.js">
+  <component name="RunManager" selected="JavaScript Debug.spel.html">
     <configuration name="spel.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/prep/spel/spel.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -51,10 +53,14 @@
     <configuration name="skogsmulle.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/spel/skogsmulle.js" working-dir="$PROJECT_DIR$/spel">
       <method v="2" />
     </configuration>
+    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/spel/test.js" working-dir="$PROJECT_DIR$/spel">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.skogsmulle.js" />
         <item itemvalue="JavaScript Debug.spel.html" />
+        <item itemvalue="Node.js.test.js" />
+        <item itemvalue="Node.js.skogsmulle.js" />
         <item itemvalue="Node.js.lol.js" />
         <item itemvalue="Node.js.idushfs.js" />
       </list>
@@ -80,25 +86,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1893" height="392" key="GridCell.Tab.0.bottom" timestamp="1601978862357">
+    <state width="1877" height="264" key="GridCell.Tab.0.bottom" timestamp="1602013729352">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513674" />
+    <state width="1877" height="264" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602013729352" />
     <state width="1893" height="392" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1601978862357" />
-    <state width="1893" height="392" key="GridCell.Tab.0.center" timestamp="1601978862357">
+    <state width="1877" height="264" key="GridCell.Tab.0.center" timestamp="1602013729352">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513674" />
+    <state width="1877" height="264" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602013729352" />
     <state width="1893" height="392" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1601978862357" />
-    <state width="1893" height="392" key="GridCell.Tab.0.left" timestamp="1601978862357">
+    <state width="1877" height="264" key="GridCell.Tab.0.left" timestamp="1602013729351">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513673" />
+    <state width="1877" height="264" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602013729351" />
     <state width="1893" height="392" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1601978862357" />
-    <state width="1893" height="392" key="GridCell.Tab.0.right" timestamp="1601978862357">
+    <state width="1877" height="264" key="GridCell.Tab.0.right" timestamp="1602013729352">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1601804513674" />
+    <state width="1877" height="264" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1602013729352" />
     <state width="1893" height="392" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1601978862357" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1601978534155">
       <screen x="0" y="0" width="1920" height="1080" />

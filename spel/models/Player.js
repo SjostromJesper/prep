@@ -1,7 +1,4 @@
-import {experienceChart} from "../skillCharts";
-
 export class Player {
-
     /**
      *
      * @param name
@@ -12,12 +9,16 @@ export class Player {
      * @param maxHealth
      * @param currentHealth
      */
-
-
     constructor(name, experience, speed = 10, weapon) {
         this.id = 1;
         this.name = name;
+
+        this.level = 1;
         this.experience = experience;
+
+        this.maxHealth = 100;
+        this.currentHealth = 100;
+
         this.speed = speed;
         this.weapon = weapon;
 
@@ -26,21 +27,29 @@ export class Player {
         this.dexterity = 10;
     }
 
-    gainExp = (experience, level, expChart) => {
+    gainExp(experience, expChart) {
         this.experience += experience;
 
-        for (let key in expChart) {
-            if (this.experience > experienceChart[level]) {
-                level = key
-            }
+        let index = this.level -1;
+        if(this.experience >= expChart[index]){
+            console.log("you are experienced enough to level up. Ding!");
+            console.log("you are now level", index + 2);
+            this.level = index + 2;
+            this.maxHealth += 15;
+
+            return true;
         }
-    };
-
-    calcDamage = () => {
-        return this.weapon.damage * (this.strength / 10);
+        else {
+            console.log("you are level", this.level);
+            return false;
+        }
     }
 
-    calcArmor = () => {
-        return 0;
-    }
+    // calcDamage = () => {
+    //     return this.weapon.damage * (this.strength / 10);
+    // }
+    //
+    // calcArmor = () => {
+    //     return 0;
+    // }
 }

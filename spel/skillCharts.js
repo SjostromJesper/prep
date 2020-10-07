@@ -1,4 +1,12 @@
-
+export const expChartArray = [
+    100, //2
+    200, // 3
+    400, //4
+    800, //5
+    1500, //6
+    2600, //7
+    4200 //8
+];
 
 export const experienceChart = {
     1: 0,

@@ -6,7 +6,7 @@
  */
 
 import {monsterList, monstersToArray} from "./monsterList.js";
-import {experienceChart} from "./skillCharts.js";
+import {experienceChart, expChartArray} from "./skillCharts.js";
 import {Monster} from "./models/Monster.js";
 import {Player} from "./models/Player.js";
 
@@ -43,12 +43,13 @@ const entities = [];
 const getSavedPlayer = (playerName) => {
 
     if(typeof window.localStorage.getItem(playerName) == "string") {
-        console.log("here")
-        let p = window.localStorage.getItem("Beppe");
+        console.log("here");
+        let p =  window.localStorage.getItem("Beppe");
+        console.log(JSON.parse(p));
         entities.push(JSON.parse(p));
     }
     else {
-        console.log("or here")
+        console.log("or here");
         entities.push(new Player("Beppe", 0, 10, "axe"));
     }
 
@@ -123,11 +124,13 @@ const updateStats = () => {
         window.localStorage.clear();
     }
     else {
+
         healthPercent.style.width = currentHealth + "%";
         healthText.innerHTML = currentHealth.toString();
         experienceText.innerHTML = entities[0].experience.toString();
+        levelText.innerHTML = entities[0].level.toString();
 
-        window.localStorage.setItem(entities[0].name, JSON.stringify(entities[0]));
+
     }
 };
 
@@ -157,6 +160,7 @@ let inCombat = false;
 
 const baseDamage = 5;
 
+const knife = 3;
 const sword = 6;
 const axe = 7;
 const greatAxe = 12;
@@ -189,13 +193,17 @@ healButton.addEventListener("click", event => {
 damageButton.addEventListener('click', event => {
     if (monster !== null && alive) {
         if (monster.health > 0) {
-            let amount = Math.floor((Math.random() * baseDamage)) + greatSmithHammer.attack + greatSmithHammer.fireDamage;
-            currentHealth -= greatSmithHammer.selfBurn;
+            let amount = Math.floor((Math.random() * baseDamage)) + axe;
             logEvent("you attack the fiend for: " + amount + " damage.");
             monster.health -= amount;
             if (monster.health <= 0) {
                 logEvent("you killed the foul fiend!(" + monster.exp + " exp)");
-                entities[0].experience += monster.exp;
+                //entities[0].experience += monster.exp;
+                let levelUp = entities[0].gainExp(monster.exp, expChartArray);
+                if(levelUp) {
+                    maxHealth += 15;
+                    currentHealth = maxHealth;
+                }
 
                 for (let key in experienceChart) {
                     if (entities[0] > experienceChart[key]) {
@@ -224,6 +232,7 @@ damageButton.addEventListener('click', event => {
             if (currentHealth <= 0) {
                 alive = false;
                 logEvent("you died!");
+                window.localStorage.clear();
             }
         }
     }
@@ -359,6 +368,7 @@ addEventListener("keydown", event => {
         if (event.key === "ArrowDown" || event.key === "s") {
             walkY("down");
         }
+        window.localStorage.setItem(entities[0].name, JSON.stringify(entities[0]));
     }
 
 });

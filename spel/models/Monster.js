@@ -12,4 +12,8 @@ export class Monster {
         this.posX = posX;
         this.posY = posY;
     }
+
+    gainExp(lol, lol1) {
+        console.log("loling")
+    }
 }
